@@ -1,13 +1,13 @@
 * {
-    border: solid black;
+    /* border: solid black; */
     box-sizing: border-box;
 }
 .navbar {
     /* background-color: #333; */
     overflow: hidden;
-    display: flex; /* Usamos flexbox para alinear elementos */
-    justify-content: flex-start; /* Alineamos los elementos a la izquierda */
-    align-items: center; /* Centramos verticalmente los elementos */
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
 }
 
 .navbar a {
@@ -25,12 +25,12 @@
 
 /* Estilos para el logo */
 .logo {
-    margin-right: auto; /* Empuja el logo hacia la izquierda */
+    margin-right: auto; 
 }
 
 /* Estilos para el buscador */
 .search {
-    margin-left: auto; /* Empuja el div del buscador hacia la izquierda */
+    margin-left: auto; 
 }
 
 .search input[type="text"] {
@@ -53,14 +53,13 @@ h2 {
     margin-bottom: 2rem;
     /* margin-left: 50px; */
     padding-left: 5%;
-    font-size: 50px; /* Puedes ajustar el valor según tus preferencias */
+    font-size: 50px; 
 }
 
 /* div.contacto {
     display: flex;
 } */
 
-/* GPT */
 .contacto {
     display: flex;
     align-items: center;
@@ -68,19 +67,19 @@ h2 {
 
 .contacto img {
     width: 100px;
-    height: 100px; /* Ajusta la altura según sea necesario */
+    height: 100px; 
     margin-right: 20px;
 }
 .contacto {
     max-width: 1300px;
-    margin: 0 auto 20px; /* Centra horizontalmente el elemento en la pantalla */
-    padding: 0 10px; /* Agrega espacio a la derecha e izquierda */
+    margin: 0 auto 20px;
+    padding: 0 10px; 
     display: flex;
     align-items: center;
 }
 
 .info-usuario {
-    flex-grow: 1; /* Esto hará que ocupe todo el espacio disponible */
+    flex-grow: 1; 
 }
 
 .puntuacion, .fecha, .urgencia {
