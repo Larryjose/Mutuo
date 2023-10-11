@@ -61,6 +61,7 @@ h2 {
 } */
 
 .contacto {
+    border: solid black;
     display: flex;
     align-items: center;
 }
@@ -84,4 +85,9 @@ h2 {
 
 .puntuacion, .fecha, .urgencia {
     margin-right: 10px;
+}
+.info {
+    flex-grow: 1;
+    flex-shrink: 3;
+    text-align: right;
 }
