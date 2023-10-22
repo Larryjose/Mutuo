@@ -967,14 +967,17 @@ section {
 /*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
+
 .team .team-member {
   overflow: hidden;
-  background: #fff;
+  background: #ffffff;
+  
 }
 
 .team .team-member .member-img {
   position: relative;
   overflow: hidden;
+  
 }
 
 .team .team-member .social {
@@ -989,6 +992,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .team .team-member .social a {
@@ -1014,7 +1018,7 @@ section {
 }
 
 .team .team-member .member-info {
-  padding: 25px 15px 0 15px;
+  padding: 25px 15px 25px 15px;
   text-align: center;
 }
 
