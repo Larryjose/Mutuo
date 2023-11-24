@@ -1,4 +1,7 @@
 const express = require('express');
+require('dotenv').config();
+
+const url_mongo = process.env.URL_MONGO_MUTUO;
 const bodyParser = require('body-parser');
 const path = require('path');
 
