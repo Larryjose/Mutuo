@@ -136,6 +136,66 @@
     </section>
     <!-- End Blog Section -->
 
+     <!-- Contenedor de la barra de búsqueda -->
+     <div class="search-bar-container">
+      <div class="input-group">
+          <input type="text" class="form-control search-bar" placeholder="Buscar...">
+          <div class="input-group-append">
+              <!-- Aplicamos el estilo al botón Buscar -->
+              <button class="btn btn-success search-button" type="button">Buscar</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Contenedor de los filtros -->
+  <div class="filter-container">
+      <!-- Filtros de palabras clave -->
+      <div class="text-center mb-3">
+          <span class="filter filter-green">Filtro Verde</span>
+          <span class="filter filter-blue">Filtro Azul</span>
+          <span class="filter filter-orange">Filtro Naranja</span>
+          <span class="filter filter-purple">Filtro Morado</span>
+          <span class="filter filter-red">Filtro Rojo</span>
+          <span class="filter filter-pink">Filtro Rosado</span>
+          <span class="filter filter-cyan">Filtro Cian</span>
+          <span class="filter filter-yellow">Filtro Amarillo</span>
+      </div>
+
+      <!-- Filtros por provincia y localidad -->
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <!-- Menú desplegable para provincias -->
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="provinciaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Filtrar por Provincia
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="provinciaDropdown">
+                      <a class="dropdown-item" href="#">Provincia 1</a>
+                      <a class="dropdown-item" href="#">Provincia 2</a>
+                      <a class="dropdown-item" href="#">Provincia 3</a>
+                      <!-- Agrega más provincias según sea necesario -->
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+              <!-- Menú desplegable para localidades -->
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="localidadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Filtrar por Localidad
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="localidadDropdown">
+                      <a class="dropdown-item" href="#">Localidad 1</a>
+                      <a class="dropdown-item" href="#">Localidad 2</a>
+                      <a class="dropdown-item" href="#">Localidad 3</a>
+                      <!-- Agrega más localidades según sea necesario -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -225,6 +285,10 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 

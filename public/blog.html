@@ -100,6 +100,68 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
+    <!-- Contenedor de la barra de búsqueda -->
+    <div class="search-bar-container">
+      <div class="input-group">
+          <input type="text" class="form-control search-bar" placeholder="Buscar...">
+          <div class="input-group-append">
+              <!-- Aplicamos el estilo al botón Buscar -->
+              <button class="btn btn-success search-button" type="button">Buscar</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Contenedor de los filtros -->
+  <div class="filter-container">
+    <!-- Filtros de palabras clave -->
+    <div class="text-center mb-3">
+        <span class="filter filter-green">Filtro Verde</span>
+        <span class="filter filter-blue">Filtro Azul</span>
+        <span class="filter filter-orange">Filtro Naranja</span>
+        <span class="filter filter-purple">Filtro Morado</span>
+        <span class="filter filter-red">Filtro Rojo</span>
+        <span class="filter filter-pink">Filtro Rosado</span>
+        <span class="filter filter-cyan">Filtro Cian</span>
+        <span class="filter filter-yellow">Filtro Amarillo</span>
+    </div>
+
+    <!-- Filtros por provincia y localidad -->
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <!-- Menú desplegable para provincias -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="provinciaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrar por Provincia
+                </button>
+                <div class="dropdown-menu" aria-labelledby="provinciaDropdown">
+                    <a class="dropdown-item" href="#">Provincia 1</a>
+                    <a class="dropdown-item" href="#">Provincia 2</a>
+                    <a class="dropdown-item" href="#">Provincia 3</a>
+                    <!-- Agrega más provincias según sea necesario -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <!-- Menú desplegable para localidades -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="localidadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrar por Localidad
+                </button>
+                <div class="dropdown-menu" aria-labelledby="localidadDropdown">
+                    <a class="dropdown-item" href="#">Localidad 1</a>
+                    <a class="dropdown-item" href="#">Localidad 2</a>
+                    <a class="dropdown-item" href="#">Localidad 3</a>
+                    <!-- Agrega más localidades según sea necesario -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
+    <button class="btn btn-primary toggle-filters-button" type="button">Mostrar Filtros</button>
+</div>
+
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
@@ -318,13 +380,13 @@
 
             <div class="sidebar ps-lg-4">
 
-              <div class="sidebar-item search-form">
+              <!-- <div class="sidebar-item search-form">
                 <h3 class="sidebar-title">Buscar</h3>
                 <form action="" class="mt-3">
                   <input type="text">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
-              </div><!-- End sidebar search formn-->
+              </div> -->
 
               <div class="sidebar-item categories">
                 <h3 class="sidebar-title">Agregados recientemente</h3>
@@ -388,7 +450,7 @@
               </div><!-- End sidebar recent posts-->
               
 
-              <div class="sidebar-item tags">
+              <!-- <div class="sidebar-item tags">
                 <h3 class="sidebar-title">categorias</h3>
                 <ul class="mt-3">
                   <li><a href="#">animales</a></li>
@@ -403,7 +465,7 @@
                   <li><a href="#">ayuda</a></li>
                   <li><a href="#">hogar</a></li>
                 </ul>
-              </div><!-- End sidebar tags-->
+              </div> -->
 
             </div><!-- End Blog Sidebar -->
 
@@ -499,6 +561,15 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      // Función para mostrar/ocultar filtros en pantallas pequeñas
+      document.querySelector('.toggle-filters-button').addEventListener('click', function () {
+          document.querySelector('.filter-container').classList.toggle('show-filters');
+      });
+  </script>
 
 </body>
 
