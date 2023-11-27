@@ -385,6 +385,114 @@ section {
   }
 }
 
+/*---  busqueda y filtros--*/
+.search-bar-container,
+        .filter-container {
+            width: 75%;
+            margin: 20px auto; /* Ajustamos el margen superior e inferior */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #001f3f; /* Cambiamos el color de fondo del contenedor principal a azul oscuro */
+            border-radius: 10px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff; /* Cambiamos el color de fondo del cuadro de búsqueda a blanco */
+            color: #001f3f; /* Cambiamos el color del texto del cuadro de búsqueda a azul oscuro */
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #dc3545; /* Rojo oscuro de Bootstrap */
+            border: none;
+            color: #fff; /* Texto blanco */
+            border-radius: 5px;
+        }
+
+        .filter {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        /* Diferentes colores de fondo para palabras clave */
+        .filter-green {
+            background-color: #28a745; /* Verde */
+        }
+
+        .filter-blue {
+            background-color: #007bff; /* Azul */
+        }
+
+        .filter-orange {
+            background-color: #ffc107; /* Naranja */
+        }
+
+        .filter-purple {
+            background-color: #6f42c1; /* Morado */
+        }
+
+        .filter-red {
+            background-color: #dc3545; /* Rojo */
+        }
+
+        .filter-pink {
+            background-color: #e83e8c; /* Rosado */
+        }
+
+        .filter-cyan {
+            background-color: #17a2b8; /* Cian */
+        }
+
+        .filter-yellow {
+            background-color: #ffc107; /* Amarillo */
+        }
+
+        /* Estilo para los menús desplegables */
+        .dropdown-menu {
+            border-radius: 10px;
+            background-color: #001f3f; /* Cambiamos el color de fondo de los menús desplegables a azul oscuro */
+        }
+
+        /* Ocultar/mostrar filtros en pantallas pequeñas */
+        @media (max-width: 767.98px) {
+            .filter-container .row,
+            .text-center.mb-3 {
+                display: none;
+            }
+
+            .toggle-filters-button {
+                display: block;
+            }
+
+            .show-filters .row,
+            .show-filters .text-center.mb-3 {
+                display: flex !important;
+            }
+        }
+
+        /* Mostrar filtros en pantallas grandes */
+        @media (min-width: 768px) {
+            .toggle-filters-button {
+                display: none;
+            }
+        }
+
+
+
+
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
