@@ -465,6 +465,18 @@ section {
             border-radius: 10px;
             background-color: #001f3f; /* Cambiamos el color de fondo de los menús desplegables a azul oscuro */
         }
+        
+
+        .filter-container.show-filters .text-center.mb-3 {
+                display: flex !important;
+                flex-wrap: wrap; /* Permitir que los filtros se envuelvan en pantallas pequeñas */
+                justify-content: center; /* Centrar los filtros en el contenedor */
+            }
+
+            .filter-container.show-filters .filter {
+                margin-right: 5px; /* Espacio entre los filtros */
+            }
+        
 
         /* Ocultar/mostrar filtros en pantallas pequeñas */
         @media (max-width: 767.98px) {
@@ -477,8 +489,8 @@ section {
                 display: block;
             }
 
-            .show-filters .row,
-            .show-filters .text-center.mb-3 {
+            .filter-container.show-filters .row,
+            .filter-container.show-filters .text-center.mb-3 {
                 display: flex !important;
             }
         }
@@ -489,7 +501,6 @@ section {
                 display: none;
             }
         }
-
 
 
 

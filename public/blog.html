@@ -101,8 +101,7 @@
     </div><!-- End Breadcrumbs -->
 
 
-     <!-- Contenedor de la barra de búsqueda -->
-     <div class="search-bar-container">
+    <div class="search-bar-container">
       <div class="input-group">
           <input type="text" class="form-control search-bar" placeholder="Buscar...">
           <div class="input-group-append">
@@ -112,57 +111,56 @@
       </div>
   </div>
 
-  <!-- Contenedor de los filtros -->
+  
   <div class="filter-container">
-      <!-- Filtros de palabras clave -->
-      <div class="text-center mb-3">
-          <span class="filter filter-green">Filtro Verde</span>
-          <span class="filter filter-blue">Filtro Azul</span>
-          <span class="filter filter-orange">Filtro Naranja</span>
-          <span class="filter filter-purple">Filtro Morado</span>
-          <span class="filter filter-red">Filtro Rojo</span>
-          <span class="filter filter-pink">Filtro Rosado</span>
-          <span class="filter filter-cyan">Filtro Cian</span>
-          <span class="filter filter-yellow">Filtro Amarillo</span>
+     
+      <div class="text-center mb-3 col-xs-12">
+          <span class="filter filter-green">hogar</span>
+          <span class="filter filter-blue">niñera</span>
+          <span class="filter filter-orange">profesor particular</span>
+          <span class="filter filter-purple">plomeria</span>
+          <span class="filter filter-red">gasista</span>
+          <span class="filter filter-pink">servicio de limpieza</span>
+          <span class="filter filter-cyan">peluqueria</span>
+          <span class="filter filter-yellow">electricista</span>
       </div>
 
-      <!-- Filtros por provincia y localidad -->
       <div class="row">
-          <div class="col-md-6 mb-3">
-              <!-- Menú desplegable para provincias -->
-              <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="provinciaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Filtrar por Provincia
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="provinciaDropdown">
-                      <a class="dropdown-item" href="#">Provincia 1</a>
-                      <a class="dropdown-item" href="#">Provincia 2</a>
-                      <a class="dropdown-item" href="#">Provincia 3</a>
-                      <!-- Agrega más provincias según sea necesario -->
-                  </div>
+          <div class="col-md-3 mb-3 text-color:white">
+              <div>
+                  <label for="localidadDropdown" class="bg-primary">Buscar por Ubicación:</label>
               </div>
           </div>
 
           <div class="col-md-6 mb-3">
-              <!-- Menú desplegable para localidades -->
-              <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="localidadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Filtrar por Localidad
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="localidadDropdown">
-                      <a class="dropdown-item" href="#">Localidad 1</a>
-                      <a class="dropdown-item" href="#">Localidad 2</a>
-                      <a class="dropdown-item" href="#">Localidad 3</a>
-                      <!-- Agrega más localidades según sea necesario -->
-                  </div>
-              </div>
+              <select class="form-control" id="localidadDropdown">
+                  <option value="Buenos Aires">Buenos Aires</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Santa Fe">Santa Fe</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Tucumán">Tucumán</option>
+                  <option value="Entre Ríos">Entre Ríos</option>
+                  <option value="Salta">Salta</option>
+                  <option value="Misiones">Misiones</option>
+                  <option value="Chaco">Chaco</option>
+                  <option value="Corrientes">Corrientes</option>
+                  <option value="Santiago del Estero">Santiago del Estero</option>
+                  <option value="Jujuy">Jujuy</option>
+                  <option value="San Juan">San Juan</option>
+                  <option value="San Luis">San Luis</option>
+                  <option value="La Pampa">La Pampa</option>
+                  <option value="Formosa">Formosa</option>
+                  <option value="Chubut">Chubut</option>
+                  <option value="Neuquén">Neuquén</option>
+                  <option value="La Rioja">La Rioja</option>
+                  <option value="Tierra del Fuego">Tierra del Fuego</option>
+              </select>
           </div>
       </div>
 
       <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
       <button class="btn btn-primary toggle-filters-button" type="button">Mostrar Filtros</button>
   </div>
-
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
@@ -565,6 +563,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
         // Función para mostrar/ocultar filtros en pantallas pequeñas

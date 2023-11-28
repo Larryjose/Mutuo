@@ -5,6 +5,81 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+
+
+// busqueda y filtros
+
+document.querySelector('.toggle-filters-button').addEventListener('click', function () {
+  document.querySelector('.filter-container').classList.toggle('show-filters');
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchButton = document.querySelector('.search-button');
+  const searchInput = document.querySelector('.search-bar');
+  const colorFilters = document.querySelectorAll('.filter');
+  const provinciaDropdown = document.getElementById('localidadDropdown');
+
+  searchButton.addEventListener('click', function () {
+      const query = searchInput.value;
+      const selectedColors = Array.from(colorFilters)
+          .filter(filter => filter.classList.contains('selected'))
+          .map(filter => filter.innerText);
+      const selectedProvincia = provinciaDropdown.value;
+
+      let message = '';
+
+      if (selectedColors.length > 0 || query !== '' || selectedProvincia !== '') {
+          message += 'Información seleccionada:\n\n';
+
+          if (selectedColors.length > 0) {
+              message += '- Colores: ' + selectedColors.join(', ') + '\n';
+          }
+
+          if (query !== '') {
+              message += '- Búsqueda: ' + query + '\n';
+          }
+
+          if (selectedProvincia !== '') {
+              message += '- Provincia: ' + selectedProvincia + '\n';
+          }
+      } else {
+          message = 'No ha seleccionado nada';
+      }
+
+      Swal.fire({
+          title: 'Resultado de la búsqueda',
+          text: message,
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      });
+  });
+
+  // Función para manejar los clics en los filtros de colores
+  colorFilters.forEach(filter => {
+      filter.dataset.originalColor = window.getComputedStyle(filter).backgroundColor;
+
+      filter.addEventListener('click', function () {
+          if (this.classList.contains('selected')) {
+              this.classList.remove('selected');
+              this.style.backgroundColor = this.dataset.originalColor;
+              this.style.color = '#fff';
+          } else {
+              this.classList.add('selected');
+              this.style.backgroundColor = '#000000';
+              this.style.color = this.dataset.color;
+          }
+      });
+  });
+});
+
+
+
+
+
+//
+
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
