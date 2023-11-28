@@ -10,9 +10,9 @@
 
 // busqueda y filtros
 
-document.querySelector('.toggle-filters-button').addEventListener('click', function () {
-  document.querySelector('.filter-container').classList.toggle('show-filters');
-});
+// document.querySelector('.toggle-filters-button').addEventListener('click', function () {
+//   document.querySelector('.filter-container').classList.toggle('show-filters');
+// });
 
 
 document.addEventListener('DOMContentLoaded', function () {
