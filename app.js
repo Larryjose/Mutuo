@@ -1,3 +1,4 @@
+
 const express = require("express");
 require("dotenv").config();
 
@@ -11,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const PORT = 3000;
+
+app.get("/",(req,res)=> res.sendFile(__dirname + "/login.html"))
+
 
 app.post("/login", (req, res) => {
   const email = req.body.email;
