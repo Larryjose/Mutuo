@@ -1,41 +1,45 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  const mensajeError = document.getElementsByClassName("error")[0];
+async function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-  document
-    .getElementById("login-form")
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
 
-      try {
-        const res = await fetch("http://localhost:3000/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user: email,
-            password,
-          }),
-        });
+try {
+  const res = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
 
-        if (!res.ok) {
-          console.error("Error en la solicitud:", res.status, res.statusText);
-          return mensajeError.classList.toggle("escondido", false);
-        }
+  console.log(res); //  imprimir la respuesta en la consola
 
-        const resJson = await res.json();
+  if (!res.ok) {
+    throw new Error(`Error en la solicitud: ${res.status} - ${res.statusText}`);
+  }
 
-        if (resJson.redirect) {
-          // Almacenar el token en el almacenamiento local (localStorage)
-          localStorage.setItem("token", resJson.token);
-          window.location.href = resJson.redirect;
-        }
-      } catch (error) {
-        console.error("Error en la solicitud:", error.message);
-        // Manejar el error de manera adecuada, por ejemplo, mostrando un mensaje al usuario
-      }
-    });
-});
+  const resJson = await res.json();
+
+  if (resJson.token) {
+    // Almacenar el token en el almacenamiento local (localStorage)
+    localStorage.setItem("token", resJson.token);
+
+    // Redireccionar a la página especificada por el servidor
+    if (resJson.redirect) {
+      window.location.href = resJson.redirect;
+    } else {
+      // Redireccionar a una página predeterminada si no se especifica ninguna
+      window.location.href = "/contact.html";
+    }
+  }
+} catch (error) {
+  console.error("Error en la solicitud:", error.message);
+  // Manejar el error de manera adecuada, por ejemplo, mostrar un mensaje al usuario
+}
+
+
+}

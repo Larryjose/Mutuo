@@ -99,7 +99,7 @@ async function createUser(body) {
       await client.close();
     }
 
-    console.log("Conectado");
+    console.log("Conectado!");
   } catch (error) {
     console.log(error);
   }  
@@ -136,7 +136,7 @@ async function loginUser(body) {
       await client.close();
     }
 
-    console.log("Conectado");
+    console.log("Conectado!!");
   } catch (error) {
     console.log(error);
   }  
