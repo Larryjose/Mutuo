@@ -107,20 +107,21 @@ async function createUser(body) {
 
 async function loginUser(body) {
   const { email: emailFront, password } = body;
+  console.log(`${body.email}`)
 
   try {
     await client.connect();
     const database = client.db();
     const collection = database.collection("users");
-
+    
     const criterioEmail = {
       email: emailFront
     };
-
+    
     try {
       // Buscar un solo documento que cumpla con el criterio
       const resultado = await collection.findOne(criterioEmail);
-  
+      console.log(`${resultado}`)
       if (resultado) {
         if (resultado.password === password) {
           return true;
@@ -135,7 +136,7 @@ async function loginUser(body) {
     } finally {
       await client.close();
     }
-
+    
     console.log("Conectado!!");
   } catch (error) {
     console.log(error);
