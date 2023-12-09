@@ -1037,7 +1037,7 @@ section {
 .recent-posts .post-box .meta .post-date {
   font-size: 15px;
   font-weight: 400;
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .recent-posts .post-box .meta .post-author {
