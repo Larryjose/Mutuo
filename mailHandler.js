@@ -32,12 +32,7 @@ function crearMensajeMail(from, to, subject, html) {
 
 function enviarBienvenida(mail) {
   transporter.sendMail(
-    {
-      Form: senderMail,
-      to: mail,
-      subject: "asuntillo",
-      html: "<h1>¡ Bienvenido a MUTUO !</h1>",
-    },
+    crearMensajeMail(senderMail, mail, beinvenidaSubject, beinvenidoHTML),
     (err, info) => {
       if (err) {
         console.log(err);
@@ -45,14 +40,6 @@ function enviarBienvenida(mail) {
       }
       console.log(info);
     }
-    // crearMensajeMail(senderMail, mail, beinvenidaSubject, beinvenidoHTML),
-    // (err, info) => {
-    //   if (err) {
-    //     console.log(err);
-    //     return err;
-    //   }
-    //   console.log(info);
-    // }
   );
 }
 
@@ -68,5 +55,22 @@ function enviarAlertaDeMensaje(mail) {
     }
   );
 }
+function enviarMensajeDeUsuarioParaMutuo(emailUsuario, mensajeDelUsuario) {
+  transporter.sendMail(
+    crearMensajeMail(senderMail, senderMail, emailUsuario, mensajeDelUsuario),
+    (err, info) => {
+      if (err) {
+        console.log(err);
+        return err;
+      }
+      console.log(info);
+    }
+  );
+}
 
-enviarAlertaDeMensaje(testDestinationMail);
+module.exports = {
+  enviarBienvenida,
+  enviarAlertaDeMensaje,
+  enviarMensajeDeUsuarioParaMutuo,
+};
+// enviarAlertaDeMensaje(testDestinationMail);

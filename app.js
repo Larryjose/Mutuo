@@ -13,10 +13,20 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const {
+  enviarBienvenida,
+  enviarAlertaDeMensaje,
+  enviarMensajeDeUsuarioParaMutuo,
+} = require('./mailHandler');
+
 const PORT = 3000;
 
 app.get("/",(req,res)=> res.sendFile(__dirname + "/login.html"))
 
+app.post("/contacto", (req,res) => {
+  enviarMensajeDeUsuarioParaMutuo(req.body.email, req.body.message)
+  res.redirect("/contact.html")
+})
 
 app.post("/login", async (req, res) => {
   const email = req.body.email;
