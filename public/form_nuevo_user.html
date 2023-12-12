@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Nuevo Usuario</title>
+</head>
+<body>
+    <form action="/registrar" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="username" required><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br>
+
+        
+        <label for="codigo_postal">Código Postal:</label>
+            <input type="text" id="codigo_postal" name="cp" required><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <!-- -----------------NO------------------ -->
+    <!-- 
+            <label for="zona">Zona:</label>
+            <input type="text" id="zona" name="zona" required><br>
+    
+            <label for="barrio">Barrio:</label>
+            <input type="text" id="barrio" name="barrio" required><br> -->
+    <!-- 
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="cp" required><br> -->
+            <!-- -----------------NO------------------ -->
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="password" required><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

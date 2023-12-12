@@ -101,40 +101,42 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
+    <form action="/busqueda" method="post">
 
-    <div class="search-bar-container">
-      <div class="input-group">
-          <input type="text" class="form-control search-bar" placeholder="Buscar...">
+      <div class="search-bar-container">
+        <div class="input-group">
+          <input name="palabra-clave" type="text" class="form-control search-bar" placeholder="Buscar...">
           <div class="input-group-append">
-              <!-- Aplicamos el estilo al botón Buscar -->
-              <button class="btn btn-success search-button" type="button">Buscar</button>
+            <!-- Aplicamos el estilo al botón Buscar -->
+            <button class="btn btn-success search-button" type="submit">Buscar</button>
           </div>
+        </div>
       </div>
-  </div>
-
+      
   
-  <div class="filter-container">
-     
-      <div class="text-center mb-3 col-xs-12">
-          <span class="filter filter-green">hogar</span>
-          <span class="filter filter-blue">niñera</span>
-          <span class="filter filter-orange">profesor particular</span>
-          <span class="filter filter-purple">plomeria</span>
-          <span class="filter filter-red">gasista</span>
-          <span class="filter filter-pink">servicio de limpieza</span>
-          <span class="filter filter-cyan">peluqueria</span>
-          <span class="filter filter-yellow">electricista</span>
-      </div>
-
-      <div class="row">
+      <div class="filter-container">
+    
+        <div class="text-center mb-3 col-xs-12">
+          <button class="filter filter-green" name="filterHogar" id="filterHogar">hogar</button>
+          <input type="checkbox" id="filterNinera" name="filter" value="ninera">
+          <button class="filter filter-blue" name="filterNinera" id="filterNinera">niñera</button>
+          <button class="filter filter-orange" name="filterProfesor" id="filterProfesor">profesor particular</button>
+          <button class="filter filter-purple" name="filterPlomeria" id="filterPlomeria">plomeria</button>
+          <button class="filter filter-red" name="filterGasista" id="filterGasista">gasista</button>
+          <button class="filter filter-pink" name="filterLimpieza" id="filterLimpieza">servicio de limpieza</button>
+          <button class="filter filter-cyan" name="filterPeluqueria" id="filterPeluqueria">peluqueria</button>
+          <button class="filter filter-yellow" name="filterElectricista" id="filterElectricista">electricista</button>
+        </div>
+        
+        <div class="row">
           <div class="col-md-3 mb-3 text-color:white">
-              <div>
-                  <label for="localidadDropdown" class="bg-primary">Buscar por Provincia:</label>
-              </div>
+            <div>
+              <label for="localidadDropdown" class="bg-primary">Buscar por Provincia:</label>
+            </div>
           </div>
-
+          
           <div class="col-md-6 mb-3">
-              <select class="form-control" id="localidadDropdown">
+                <select class="form-control" id="localidadDropdown" name="provincia">
                   <option value="Buenos Aires">Buenos Aires</option>
                   <option value="Córdoba">Córdoba</option>
                   <option value="Santa Fe">Santa Fe</option>
@@ -155,34 +157,35 @@
                   <option value="Neuquén">Neuquén</option>
                   <option value="La Rioja">La Rioja</option>
                   <option value="Tierra del Fuego">Tierra del Fuego</option>
-              </select>
-          </div>
-      </div>
+                </select>
+              </div>
+            </div>
 
-      <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
-      <button class="btn btn-primary toggle-filters-button" type="button">Mostrar Filtros</button>
-  </div>
+            <!-- Botón para mostrar/ocultar filtros en pantallas pequeñas -->
+            <button class="btn btn-primary toggle-filters-button" type="button">Mostrar Filtros</button>
+          </div>
+    </form>
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
         <div class="row g-5">
-
+          
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 
             <div class="row gy-5 posts-list">
-
+              
               <div class="col-lg-6">
                 <article class="d-flex flex-column">
 
                   <div class="post-img">
                     <img src="assets/img/blog/roca-marcia-gasista-03 (1).webp" alt="" class="img-fluid">
                   </div>
-
+                  
                   <h2 class="title">
                     <a href="Profile-details.html">GASISTA - Dolores Andreani - CABA, Villa Luro</a>
                   </h2>
-
+                  
                   <div class="meta-top">
                     <ul>
                       <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Activa</a></li>
@@ -190,31 +193,31 @@
                       <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 recomendaciones</a></li>
                     </ul>
                   </div>
-
+                  
                   <div class="content">
                     <p>
                       Especializada en la instalación, mantenimiento y reparación de sistemas, mi enfoque se centra en cumplir con los más altos estándares de calidad y normativas de seguridad. Con habilidades técnicas excepcionales...
                     </p>
                   </div>
-
+                  
                   <div class="read-more mt-auto align-self-end">
                     <a href="#">leer más <i class="bi bi-arrow-right"></i></a>
                   </div>
-
+                  
                 </article>
               </div><!-- End post list item -->
-
+              
               <div class="col-lg-6">
                 <article class="d-flex flex-column">
-
+                  
                   <div class="post-img">
                     <img src="assets/img/blog/electricista.jpg" alt="" class="img-fluid">
                   </div>
-
+                  
                   <h2 class="title">
                     <a href="#">ELECTRICISTA - Octavio Pastor - Gran Buenos Aires, Lanús</a>
                   </h2>
-
+                  
                   <div class="meta-top">
                     <ul>
                       <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Activo</a></li>
@@ -228,25 +231,25 @@
                       Mi rol principal es instalar, mantener y arreglar todo lo relacionado con la electricidad. No me asusto ante un cable revuelto, ¡lo soluciono! Con habilidades eléctricas top, me encargo de inspeccionar, identificar y solucionar problemas para que tu sistema eléctrico siempre esté en su mejor forma. ¡Cuenta conmigo para mantener las luces encendidas y los dispositivos cargados!
                     </p>
                   </div>
-
+                  
                   <div class="read-more mt-auto align-self-end">
                     <a href="#">leer más<i class="bi bi-arrow-right"></i></a>
                   </div>
-
+                  
                 </article>
               </div><!-- End post list item -->
-
+              
               <div class="col-lg-6">
                 <article class="d-flex flex-column">
-
+                  
                   <div class="post-img">
                     <img src="assets/img/img/niñera-pelirroja.webp" alt="" class="img-fluid">
                   </div>
-
+                  
                   <h2 class="title">
                     <a href="#">NIÑERA - Rosario Tijeras - Provincia de Buenos Aires, Lomas de Zamora</a>
                   </h2>
-
+                  
                   <div class="meta-top">
                     <ul>
                       <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Activa</a></li>

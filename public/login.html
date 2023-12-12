@@ -19,7 +19,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <script src="login.js" defer></script>
+    <!-- <script src="login.js" defer></script> -->
 
     <!-- Favicons -->
     <link href="assets/img/favicon2.png" rel="icon" />
@@ -94,7 +94,7 @@
                 />
               </div>
               <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form id="login-form">
+                <form id="login-form" method="POST" action="/login">
                   <div
                     class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
                   >
@@ -127,20 +127,22 @@
                   <!-- Email input -->
                   <div class="form-outline mb-4">
                     <input
+                      name="username"
                       type="email"
                       id="email"
                       class="form-control form-control-lg"
                       placeholder="@gmail.com.ar"
                       required
-                    />
-                    <label class="form-label text-light" for="form3Example3"
+                      />
+                      <label class="form-label text-light" for="form3Example3"
                       >Correo Electrónico</label
-                    >
-                  </div>
-
-                  <!-- Password input -->
-                  <div class="form-outline mb-3">
-                    <input
+                      >
+                    </div>
+                    
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                      <input
+                      name="password"
                       type="password"
                       id="password"
                       class="form-control form-control-lg"
@@ -168,18 +170,14 @@
                   </div>
                   <form id="login-form" method="POST">
                   <div class="text-center text-lg-start mt-4 pt-2">
-                    <button
-                      type="button"
-                      onclick="login()"
-                      class="btn btn-danger btn-lg"
-                      style="padding-left: 2.5rem; padding-right: 2.5rem"
-                    >
+                    <!-- <button type="button" onclick="login()" class="btn btn-danger btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem" > -->
+                    <button type="submit" class="btn btn-danger btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem" >
                       Iniciar Sesión
                     </button>
                   </form>
                     <p class="small fw-bold mt-2 pt-1 mb-0 text-light">
                       ¿No tienes cuenta?<a
-                        href="#!"
+                        href="form_index.html"
                         class="link-secondary text-light"
                       >
                         Registrate</a
