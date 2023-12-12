@@ -32,7 +32,7 @@ app.get("/ruta-protegida", verificarToken, (req, res) => {
 });
 
 // Ruta para autenticar al usuario
-app.post("/login", (req, res) => {
+app.post("/loginsasdsd", (req, res) => {
   const { email, password } = req.body;
 
   // Lógica de autenticación simulada

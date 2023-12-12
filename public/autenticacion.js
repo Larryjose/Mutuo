@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(express.static("assets"));
 
 // Ruta para autenticar al usuario
-app.post("/login", (req, res) => {
+app.post("/loginasdasdasdaaaa", (req, res) => {
   const { email, password } = req.body;
 
   // Verificar las credenciales del usuario (aquí debes implementar tu lógica real de autenticación)
