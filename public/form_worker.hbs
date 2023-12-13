@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario Trabajador</title>
+    <meta content="" name="description"/>
+    <meta content="" name="keywords"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Favicons -->
+    <link href="assets/img/favicon2.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+    href="assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+    />
+    <link
+    href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+    href="assets/vendor/glightbox/css/glightbox.min.css"
+    rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #1b2f45;
+        color: white;
+        margin: 20rem;
+        padding: 2rem;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body class="page-index col-9 m-o">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl d-flex align-items-center justify-content-between"
+      >
+        <a href="/inicio" class="logo d-flex align-items-center">
+          <h1 class="d-flex align-items-center">Mutuo</h1>
+        </a>
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/inicio" class="active">Inicio</a></li>
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/team">Equipo</a></li>
+            <li><a href="/busqueda">Búsqueda</a></li>
+            <li><a href="/contacto">Soporte</a></li>
+            {{#if nombreUsuario}}
+                <li><a href="/cuenta" class="active">{{nombreUsuario}}</a></li>
+            {{else}}
+                <li><a href="/login" >Ingresá</a></li>
+            {{/if}}
+          </ul>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header --> 
+    <div class="col-12">
+      <label for="inputAbout" class="form-label"
+        >Contá un poco sobre vos</label
+      >
+      <input type="text" class="form-control" id="inputAbout" />
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label"
+        >Categoría a la que perteneces</label
+      >
+      <select id="inputState" class="form-select">
+        <option selected>Elige...</option>
+        <option>Plomero</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="inputName" class="form-label"
+        >Describí los trabajos que realizas</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="inputName"
+        placeholder="Ej:"
+      />
+    </div>
+    <div>
+      <label for="customRadio1" class="form-label">¿Tenes experiencia?</label>
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          id="customRadio1"
+          name="customRadio"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadio1">Sí</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          id="customRadio2"
+          name="customRadio"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadio2">No</label>
+      </div>
+    </div>
+
+    <div class="custom-file">
+      <label for="inputState" class="form-label"
+        >Adjuntar Matrícula/Cerficados</label
+      ><br />
+      <input
+        type="file"
+        class="custom-file-input"
+        id="customFileLang"
+        lang="es"
+      />
+    </div>
+
+    <div class="form-check mt-3">
+      <input
+        class="form-check-input is-invalid"
+        type="checkbox"
+        value=""
+        id="invalidCheck3" aria-describedby="invalidCheck3Feedback"
+        required
+      />
+      <label class="form-check-label" for="invalidCheck3">
+        Acepto los términos y condiciones
+      </label>
+      <div id="invalidCheck3Feedback" class="invalid-feedback">
+        Debes aceptar para poder loguearte
+      </div>
+    </div>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Verifica si hay una variable 'sweetAlertBool' definida
+                var sweetAlertBool = {{ sweetAlertBool }};
+                var sweetAlertIcon = '{{ sweetAlertIcon }}';
+                var sweetAlertText = '{{ sweetAlertText }}';
+
+                // Muestra una alerta si 'sweetAlertIcon' está presente
+                if (sweetAlertBool) {
+                Swal.fire({
+                    icon: sweetAlertIcon,
+                    title: sweetAlertText,
+                    showConfirmButton: true,
+                });
+                }
+            });
+        </script>
+  </body>
+</html>

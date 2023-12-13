@@ -39,8 +39,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </head>
 
   <body class="page-contact">
@@ -65,12 +64,8 @@
             <li><a href="/team">Equipo</a></li>
             <li><a href="/busqueda">Búsqueda</a></li>
             <li><a href="/contacto" class="active">Soporte</a></li>
-            {{#if nombreUsuario}}
-                <li><a href="/cuenta" class="active">{{nombreUsuario}}</a></li>
-            {{else}}
-                <li><a href="/login" >Ingresá</a></li>
-            {{/if}}
-          </ul>
+            <li><a href="/login" >Ingresá</a></li>
+        </ul>
         </nav>
         <!-- .navbar -->
       </div>
@@ -103,7 +98,7 @@
         <!-- Datos de la cuenta a la izquierda -->
         <div class="col-lg-6">
           <div class="row gy-4">
-            <h3>Datos de tu cuenta</h3>
+             <h3>Datos de tu cuenta</h3>
             <div class="col-md-6">
               <label for="nombreUsuario">Usuario:</label>
               <p id="nombreUsuario">{{nombreUsuario}}</p>
@@ -136,40 +131,34 @@
               <label for="cp">Código Postal:</label>
               <p id="cp">{{cp}}</p>
             </div>
-          </div>
+        </div>
         </div>
 
         <!-- Inputs a la derecha -->
         <div class="col-lg-6">
           <div class="row gy-4">
-            <form action="/guardarCambios" method="post">
-              <h3>Modifica tus datos</h3>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="apellido" placeholder="Apellido">
-              </div>
-              <div class="col-md-6">
-                <input type="email" class="form-control" name="newEmail" placeholder="Correo Electrónico">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="dni" placeholder="DNI">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="telefono" placeholder="Teléfono">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="direccion" placeholder="Dirección">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="cp" placeholder="Código Postal">
-              </div>
-              <!-- Botón de submit para enviar el formulario -->
-              <div class="col-md-12 mt-4">
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
-              </div>
-            </form>
+                <h3>Modifica tus datos</h3>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Nombre" value="{{nombre}}">
+                </div>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Apellido" value="{{apellido}}">
+                </div>
+                <div class="col-md-6">
+                <input type="email" class="form-control" placeholder="Correo Electrónico" value="{{email}}">
+                </div>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="DNI" value="{{dni}}">
+                </div>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Teléfono" value="{{telefono}}">
+                </div>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Dirección" value="{{direccion}}">
+                </div>
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Código Postal" value="{{cp}}">
+                </div>
           </div>
         </div>
       </div>
@@ -177,8 +166,10 @@
       <div class="col-lg-12 mt-4">
         <div class="row gy-4">
           <div class="col-md-6">
-            {{!-- <button class="btn btn-primary" onclick="desloguearse()">Desloguearse</button> --}}
-            <a href="/logout" class="btn btn-primary">Desloguearse</a>
+            <button class="btn btn-primary" onclick="desloguearse()">Desloguearse</button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-success" onclick="guardarCambios()">Guardar cambios</button>
           </div>
         </div>
       </div>
@@ -264,23 +255,7 @@
     ></a>
 
     <div id="preloader"></div>
-    <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Verifica si hay una variable 'sweetAlertBool' definida
-                var sweetAlertBool = {{ sweetAlertBool }};
-                var sweetAlertIcon = '{{ sweetAlertIcon }}';
-                var sweetAlertText = '{{ sweetAlertText }}';
 
-                // Muestra una alerta si 'sweetAlertIcon' está presente
-                if (sweetAlertBool) {
-                Swal.fire({
-                    icon: sweetAlertIcon,
-                    title: sweetAlertText,
-                    showConfirmButton: true,
-                });
-                }
-            });
-        </script>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
