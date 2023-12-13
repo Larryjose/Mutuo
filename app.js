@@ -80,15 +80,15 @@ function (req, username, password, done) {
 passport.use('signup', new LocalStrategy({
     passReqToCallback: true
   },
-  // Esta funcion requiere siempre recibir req, username y password. 
-  // No importa si se escribe como parametro "username" en la funcion
+  // Esta funcion requiere siempre req, username y password. 
+  // y requiere recibir username. No importa si se escribe como parametro "username" en la funcion
   // va a tomar el username recibido desde el post y si no existe
-  // no entra en la funcion y redirige a failureRedirect
-  function (req, username, password, done) {
+  // no entra en la funcion y redirige a la ruta definida en failureRedirect
+  function (req, email, password, done) {
     findOrCreateUser = function () {
       // find a user in Mongo with provided username
       console.log("Entra en la funcion de signup")
-      User.findOne({ 'nombre': username })
+      User.findOne({ 'email': req.body.email })
       .then(user => {
         // ya existe
           console.log("Entra then del User.findOne")
@@ -103,8 +103,8 @@ passport.use('signup', new LocalStrategy({
             
             console.log("--- Registros que se guardan  ---")
 
-            console.log(username)
-            newUser.nombre = username
+            console.log(req.body.username)
+            newUser.nombre = req.body.username
             console.log(req.body.password)
             newUser.password = req.body.password
 
@@ -222,7 +222,15 @@ app.get("/nosotros", (req, res) => {
 })
 app.get("/cuenta", (req, res) => {
   if(req.isAuthenticated()){
-    res.render("cuenta.hbs", { nombreUsuario: req.user.nombre });
+    res.render("cuenta.hbs", {
+       nombreUsuario: req.user.nombre,
+       apellido: req.user.apellido,
+       dni: req.user.dni,
+       telefono: req.user.telefono,
+       email: req.user.email,
+       direccion: req.user.direccion,
+       cp: req.user.cp
+    });
   } else{
     res.render("login.hbs", {});
   }
@@ -235,6 +243,91 @@ app.get("/busqueda", (req, res) => {
   }
 })
 
+app.post("/guardarCambios", (req, res) => {
+  console.log("Entra en guardarCambios")
+  let updateFields = {};
+  if (req.body.nombre) {
+    updateFields.nombre = req.body.nombre;
+  }
+  if (req.body.newEmail) {
+    // verifica si el email ya existe en mongodb
+    User.findOne({ 'email': req.body.newEmail })
+      .then(user => {
+        // ya existe
+          if (user) {
+            console.log(`ya existe usuario con el email ${req.body.newEmail}`);
+            res.render("cuenta.hbs", {
+              nombreUsuario: req.user.nombre,
+              apellido: req.user.apellido,
+              dni: req.user.dni,
+              telefono: req.user.telefono,
+              email: req.user.email,
+              direccion: req.user.direccion,
+              cp: req.user.cp,
+              sweetAlertBool: true, 
+              sweetAlertIcon: "error", 
+              sweetAlertText: `Ya existe un usuario con el email ${req.body.newEmail}`
+           });
+          } else {
+            updateFields.email = req.body.newEmail;
+          }
+        })
+  }
+  if (req.body.apellido) {
+    updateFields.apellido = req.body.apellido;
+  }
+  if (req.body.dni) {
+    updateFields.dni = req.body.dni;
+  }
+  if (req.body.telefono) {
+    updateFields.telefono = req.body.telefono;
+  }
+  if (req.body.direccion) {
+    updateFields.direccion = req.body.direccion;
+  }
+  if (req.body.cp) {
+    updateFields.cp = req.body.cp;
+  }
+  console.log(`Se actualiza el usuario: ${req.user.email}`)
+  console.log("Con:", JSON.stringify(updateFields, null, 2));
+  
+  User.findOneAndUpdate({ 'email': req.user.email }, {
+    $set: updateFields
+  },
+  // (new: true) devuelve el usuario actualizado! 
+  { new: true })
+  .then(updatedUser => {
+    if (updatedUser) {
+        console.log("se actualizo el usuario")
+        res.render('cuenta.hbs', { 
+          nombreUsuario: updatedUser.nombre,
+          apellido: updatedUser.apellido,
+          dni: updatedUser.dni,
+          telefono: updatedUser.telefono,
+          email: updatedUser.email,
+          direccion: updatedUser.direccion,
+          cp: updatedUser.cp,
+          sweetAlertBool: true, 
+          sweetAlertIcon: "success", 
+          sweetAlertText: "Datos actualizados correctamente!" 
+        });
+      } else {
+        // El email no fue encontrado
+        console.log("no se ")
+        res.render('cuenta.hbs', { 
+          sweetAlertBool: true, 
+          sweetAlertIcon: "error", 
+          sweetAlertText: "No se pudo actualizar los datos" 
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Error al actualizar usuario:", error);
+      req.logout(() => {
+        res.render('index.hbs', {});
+      });
+    });
+});
 
 app.get("/check", (req, res) => {
   if(req.isAuthenticated()){
@@ -266,8 +359,31 @@ app.get("/login", (req, res) => {
     res.render("login.hbs", {});
   }
 })
+app.get("/registrar", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("form_index.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("form_index.hbs", {});
+  }
+})
+app.get("/logout", (req, res) => {
+  if (req.isAuthenticated()) {
+    req.logout(() => {
+      res.render('login.hbs', { 
+        sweetAlertBool: true, 
+        sweetAlertIcon: "success", 
+        sweetAlertText: "Deslogueado Correctamente" 
+      });
+    });
+  } else {
+    res.render("index.hbs", {});
+  }
+});
 app.get("/error_login", (req, res) => {
-  res.render('login', { sweetAlertBool : true, sweetAlertIcon : "error", sweetAlertText : "Email o contraseña incorrectos" });
+  res.render('login.hbs', { sweetAlertBool : true, sweetAlertIcon : "error", sweetAlertText : "Email o contraseña incorrectos" });
+})
+app.get("/error_registrar", (req, res) => {
+  res.render("form_index.hbs", { sweetAlertBool : true, sweetAlertIcon : "error", sweetAlertText : "Error al registrar usuario" });
 })
 
 app.post("/contacto", (req,res) => {
@@ -284,9 +400,9 @@ app.post('/login',  passport.authenticate('login', { failureRedirect: '/error_lo
   console.log(req.user.password)
   console.log(req.user.dni)
   console.log("--- login ---")
-  res.render('login', { nombreUsuario: req.user.nombre, sweetAlertBool : true, sweetAlertIcon : "success", sweetAlertText : "Logueado Correctamente" });
+  res.render('login.hbs', { nombreUsuario: req.user.nombre, sweetAlertBool : true, sweetAlertIcon : "success", sweetAlertText : "Logueado Correctamente" });
 });
-app.post('/registrar',  passport.authenticate('signup', { failureRedirect: '/contact.html' ,successRedirect: '/blog.html'}), (req, res, next) => {
+app.post('/registrar',  passport.authenticate('signup', { failureRedirect: '/error_registrar'}), (req, res, next) => {
   console.log("--- register ---")
   console.log(req.user.nombre)
   console.log(req.user.apellido)
@@ -297,6 +413,7 @@ app.post('/registrar',  passport.authenticate('signup', { failureRedirect: '/con
   console.log(req.user.email)
   console.log(req.user.contrasena)
   console.log("--- register ---")
+  res.render('form_index.hbs', { nombreUsuario: req.user.nombre, sweetAlertBool : true, sweetAlertIcon : "success", sweetAlertText : "Registrado Correctamente" });
 });
 
 conectarDB(url_mongo)
