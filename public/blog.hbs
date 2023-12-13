@@ -44,7 +44,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="/inicio" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="d-flex align-items-center">Mutuo</h1>
@@ -60,7 +60,11 @@
             <li><a href="/team">Equipo</a></li>
             <li><a href="/busqueda" class="active">Búsqueda</a></li>
             <li><a href="/contacto">Soporte</a></li>
-            <li><a href="/login">Ingresá</a></li>
+            {{#if nombreUsuario}}
+                <li><a href="#" class="active">{{nombreUsuario}}</a></li>
+            {{else}}
+                <li><a href="/login">Ingresá</a></li>
+            {{/if}}
         </ul>
       </nav><!-- .navbar -->
 
@@ -75,7 +79,7 @@
 
         <h2>Busqueda</h2>
         <ol>
-          <li><a href="/inicio">inicio</a></li>
+          <li><a href="index.html">inicio</a></li>
           <li>Busqueda</li>
         </ol>
 

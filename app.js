@@ -7,6 +7,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require("mongoose");
 const { MongoClient } = require('mongodb');
+const exphbs = require('express-handlebars');
 require("dotenv").config();
 
 const url_mongo = process.env.URL_MONGO_MUTUO;
@@ -184,6 +185,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Se agrega HBS
+app.engine('.hbs', exphbs.engine({defaultLayout: false, extname: '.hbs'}));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = 3000;
 
@@ -200,6 +206,63 @@ function checkAuthentication(req,res,next){
 // -------------------------------------
 // Endpoints
 // -------------------------------------
+app.get("/inicio", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("index.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("index.hbs", {});
+  }
+})
+app.get("/nosotros", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("services.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("services.hbs", {});
+  }
+})
+app.get("/busqueda", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("blog.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("blog.hbs", {});
+  }
+})
+
+
+app.get("/check", (req, res) => {
+  if(req.isAuthenticated()){
+      //req.isAuthenticated() will return true if user is logged in
+      res.send(`<h1>¡Hola, ${req.user.nombre}! ¡CHECK!</h1>`);
+      // next();
+  } else{
+      res.redirect("/login");
+  }
+})
+app.get("/contacto", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("contact.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("contact.hbs", {});
+  }
+})
+app.get("/team", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("team.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("team.hbs", {});
+  }
+})
+app.get("/login", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("login.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("login.hbs", {});
+  }
+})
+app.get("/error_login", (req, res) => {
+  res.render('login', { sweetAlertBool : true, sweetAlertIcon : "error", sweetAlertText : "Email o contraseña incorrectos" });
+})
+
 app.post("/contacto", (req,res) => {
   enviarMensajeDeUsuarioParaMutuo(req.body.email, req.body.message)
   res.redirect("/contact.html")
@@ -208,11 +271,13 @@ app.post("/contacto", (req,res) => {
 app.post("/busqueda", async (req, res) => {
   console.log(req.body)
 })
-app.post('/login',  passport.authenticate('login', { failureRedirect: '/contact.html' ,successRedirect: '/blog.html'}), (req, res, next) => {
+app.post('/login',  passport.authenticate('login', { failureRedirect: '/error_login' }), (req, res, next) => {
   console.log("--- login ---")
-  console.log(req.user.username)
+  console.log(req.user.nombre)
   console.log(req.user.password)
+  console.log(req.user.dni)
   console.log("--- login ---")
+  res.render('login', { nombreUsuario: req.user.nombre, sweetAlertBool : true, sweetAlertIcon : "success", sweetAlertText : "Logueado Correctamente" });
 });
 app.post('/registrar',  passport.authenticate('signup', { failureRedirect: '/contact.html' ,successRedirect: '/blog.html'}), (req, res, next) => {
   console.log("--- register ---")

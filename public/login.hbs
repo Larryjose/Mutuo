@@ -52,6 +52,8 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body class="page-index">
@@ -69,12 +71,16 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="/inicio" >Inicio</a></li>
             <li><a href="/nosotros">Nosotros</a></li>
             <li><a href="/team">Equipo</a></li>
             <li><a href="/busqueda">Búsqueda</a></li>
             <li><a href="/contacto">Soporte</a></li>
-            <li><a href="/login">Ingresá</a></li>
+            {{#if nombreUsuario}}
+                <li><a href="#" class="active">{{nombreUsuario}}</a></li>
+            {{else}}
+                <li><a href="/login" class="active">Ingresá</a></li>
+            {{/if}}
           </ul>
         </nav>
         <!-- .navbar -->
@@ -187,6 +193,25 @@
             </div>
           </div>
         </section>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Verifica si hay una variable 'sweetAlertBool' definida
+                var sweetAlertBool = {{ sweetAlertBool }};
+                var sweetAlertIcon = '{{ sweetAlertIcon }}';
+                var sweetAlertText = '{{ sweetAlertText }}';
+
+                // Muestra una alerta si 'sweetAlertIcon' está presente
+                if (sweetAlertBool) {
+                Swal.fire({
+                    icon: sweetAlertIcon,
+                    title: sweetAlertText,
+                    showConfirmButton: true,
+                });
+                }
+            });
+        </script>
+
+
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

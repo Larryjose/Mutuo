@@ -60,7 +60,11 @@
           <li><a href="/team">Equipo</a></li>
           <li><a href="/busqueda">Búsqueda</a></li>
           <li><a href="/contacto">Soporte</a></li>
-          <li><a href="/login">Ingresá</a></li>
+          {{#if nombreUsuario}}
+              <li><a href="#" class="active">{{nombreUsuario}}</a></li>
+          {{else}}
+              <li><a href="/login">Ingresá</a></li>
+          {{/if}}
         </ul>
       </nav><!-- .navbar -->
 
