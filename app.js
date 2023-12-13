@@ -244,6 +244,9 @@ app.get("/busqueda", (req, res) => {
 })
 
 app.post("/guardarCambios", (req, res) => {
+  if(req.isAuthenticated()){
+    
+  
   console.log("Entra en guardarCambios")
   let updateFields = {};
   if (req.body.nombre) {
@@ -327,6 +330,9 @@ app.post("/guardarCambios", (req, res) => {
         res.render('index.hbs', {});
       });
     });
+  } else{
+    res.redirect("/inicio");
+  }
 });
 
 app.get("/check", (req, res) => {
