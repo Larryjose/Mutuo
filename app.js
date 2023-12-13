@@ -220,6 +220,13 @@ app.get("/nosotros", (req, res) => {
     res.render("services.hbs", {});
   }
 })
+app.get("/cuenta", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("cuenta.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("login.hbs", {});
+  }
+})
 app.get("/busqueda", (req, res) => {
   if(req.isAuthenticated()){
     res.render("blog.hbs", { nombreUsuario: req.user.nombre });

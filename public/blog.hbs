@@ -61,7 +61,7 @@
             <li><a href="/busqueda" class="active">Búsqueda</a></li>
             <li><a href="/contacto">Soporte</a></li>
             {{#if nombreUsuario}}
-                <li><a href="#" class="active">{{nombreUsuario}}</a></li>
+                <li><a href="/cuenta" class="active">{{nombreUsuario}}</a></li>
             {{else}}
                 <li><a href="/login">Ingresá</a></li>
             {{/if}}
@@ -103,7 +103,8 @@
     
         <div class="text-center mb-3 col-xs-12">
           <button class="filter filter-green" name="filterHogar" id="filterHogar">hogar</button>
-          <input type="checkbox" id="filterNinera" name="filter" value="ninera">
+          {{!-- <button class="filter filter-green" name="filterHogar" id="filterHogar">hogar</button> --}}
+          {{!-- <input type="checkbox" id="filterNinera" name="filter" value="ninera"> --}}
           <button class="filter filter-blue" name="filterNinera" id="filterNinera">niñera</button>
           <button class="filter filter-orange" name="filterProfesor" id="filterProfesor">profesor particular</button>
           <button class="filter filter-purple" name="filterPlomeria" id="filterPlomeria">plomeria</button>
