@@ -132,6 +132,24 @@
               <label for="cp">Código Postal:</label>
               <p id="cp">{{cp}}</p>
             </div>
+            {{#if about}}
+              <div class="col-md-6">
+                <label for="about">Acerca de mí:</label>
+                <p id="about">{{about}}</p>
+              </div>
+            {{/if}}
+            {{#if detalles}}
+              <div class="col-md-6">
+                <label for="detalles">Trabajos que realiza:</label>
+                <p id="detalles">{{detalles}}</p>
+              </div>
+            {{/if}}
+            {{#if categoria}}
+              <div class="col-md-6">
+                <label for="categoria">Oficio:</label>
+                <p id="categoria">{{categoria}}</p>
+              </div>
+            {{/if}}
           </div>
         </div>
 
