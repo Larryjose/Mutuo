@@ -461,19 +461,28 @@ app.post("/contacto", (req,res) => {
 
 app.post("/busqueda", async (req, res) => {
   console.log(req.body)
+
   try {
 
-    if (!req.body.palabraClave) {
-      res.render("blog.hbs", {
-        nombreUsuario: req.user.nombre,
-        sweetAlertBool : true,
-        sweetAlertIcon : "error",
-        sweetAlertText : "introduzca palabra clave"
-      });
+    if (!req.body.palabraClave || req.body.palabraClave == '') {
+      if (req.isAuthenticated()) {
+        res.render("blog.hbs", {
+          nombreUsuario: req.user.nombre,
+          sweetAlertBool : true,
+          sweetAlertIcon : "error",
+          sweetAlertText : "Introduzca palabra clave"
+        });
+      } else {
+        res.render("blog.hbs", {
+          sweetAlertBool : true,
+          sweetAlertIcon : "error",
+          sweetAlertText : "Introduzca palabra clave"
+        });
+      }
     }
 
+    //  Busca en la base de datos
     const regex = new RegExp(req.body.palabraClave, 'i');
-
     const usuariosEncontrados = await User.find({
       $or: [
         { about: regex },
@@ -487,13 +496,16 @@ app.post("/busqueda", async (req, res) => {
     console.log("--------------usuariosEncontrados-----------------")
     console.log(usuariosEncontrados)
     console.log("--------------usuariosEncontrados-----------------")
-    res.render("blog.hbs", {
-      nombreUsuario: req.user.nombre,
-      // sweetAlertBool : true,
-      // sweetAlertIcon : "error",
-      // sweetAlertText : "Error en la busqueda"
-      usuariosEncontrados: usuariosEncontrados
-    });
+    if (req.isAuthenticated()) {
+      res.render("blog.hbs", {
+        nombreUsuario: req.user.nombre,
+        usuariosEncontrados: usuariosEncontrados
+      });
+    } else {
+      res.render("blog.hbs", {
+        usuariosEncontrados: usuariosEncontrados
+      });
+    }
   } catch (error) {
     console.error("Error en la búsqueda:", error);
     
