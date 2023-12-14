@@ -54,12 +54,16 @@
       body {
         background-color: #1b2f45;
         color: white;
-        margin: 20rem;
+        margin: 2rem;
         padding: 2rem;
+      }
+      footer {
+        background-color: #1b2f45;
+        border-top: solid #fff 1px;
       }
     </style>
   </head>
-  <body class="page-index col-9 m-o">
+  <body class="page-index">
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
       <div
@@ -85,82 +89,168 @@
         <!-- .navbar -->
       </div>
     </header>
-    <!-- End Header --> 
-    <div class="col-12">
-      <label for="inputAbout" class="form-label"
-        >Contá un poco sobre vos</label
-      >
-      <input type="text" class="form-control" id="inputAbout" />
-    </div>
-    <div class="col-md-4">
-      <label for="inputState" class="form-label"
-        >Categoría a la que perteneces</label
-      >
-      <select id="inputState" class="form-select">
-        <option selected>Elige...</option>
-        <option>Plomero</option>
-      </select>
-    </div>
+    <!-- End Header -->
+    <!-- Formulario --> 
 
-    <div class="col-12">
-      <label for="inputName" class="form-label"
-        >Describí los trabajos que realizas</label
-      >
-      <input
-        type="text"
-        class="form-control"
-        id="inputName"
-        placeholder="Ej:"
-      />
-    </div>
-    <div>
-      <label for="customRadio1" class="form-label">¿Tenes experiencia?</label>
-      <div class="custom-control custom-radio">
+  <div class="mt-5 d-flex align-items-center justify-content-center flex-column">
+
+    <form class="row g-3 col-10 d-flex align-items-center justify-content-center">   
+      <div class="col-10">
+        <label for="inputAbout" class="form-label"
+          >Contá un poco sobre vos</label
+        >
+        <input type="text" class="form-control" id="inputAbout" />
+      </div>
+      <div class="col-10">
+        <label for="inputState" class="form-label"
+          >Categoría a la que perteneces</label
+        >
+        <select id="inputState" class="form-select">
+          <option selected>Elige...</option>
+          <option>Plomero</option>
+        </select>
+      </div>
+
+      <div class="col-10">
+        <label for="inputName" class="form-label"
+          >Describí los trabajos que realizas</label
+        >
         <input
-          type="radio"
-          id="customRadio1"
-          name="customRadio"
-          class="custom-control-input"
+          type="text"
+          class="form-control"
+          id="inputName"
+          placeholder="Ej:"
         />
-        <label class="custom-control-label" for="customRadio1">Sí</label>
       </div>
-      <div class="custom-control custom-radio">
+      <div class="col-10">
+        <label for="customRadio1" class="form-label">¿Tenes experiencia?</label>
+        <div class="custom-control custom-radio">
+          <input
+            type="radio"
+            id="customRadio1"
+            name="customRadio"
+            class="custom-control-input"
+          />
+          <label class="custom-control-label" for="customRadio1">Sí</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input
+            type="radio"
+            id="customRadio2"
+            name="customRadio"
+            class="custom-control-input"
+          />
+          <label class="custom-control-label" for="customRadio2">No</label>
+        </div>
+      </div>
+
+      <div class="col-10 custom-file">
+        <label for="inputState" class="form-label"
+          >Adjuntar Matrícula/Cerficados</label
+        ><br />
         <input
-          type="radio"
-          id="customRadio2"
-          name="customRadio"
-          class="custom-control-input"
+          type="file"
+          class="custom-file-input"
+          id="customFileLang"
+          lang="es"
         />
-        <label class="custom-control-label" for="customRadio2">No</label>
       </div>
-    </div>
 
-    <div class="custom-file">
-      <label for="inputState" class="form-label"
-        >Adjuntar Matrícula/Cerficados</label
-      ><br />
-      <input
-        type="file"
-        class="custom-file-input"
-        id="customFileLang"
-        lang="es"
-      />
-    </div>
-
-    <div class="form-check mt-3">
-      <input
-        class="form-check-input is-invalid"
-        type="checkbox"
-        value=""
-        id="invalidCheck3" aria-describedby="invalidCheck3Feedback"
-        required
-      />
-      <label class="form-check-label" for="invalidCheck3">
-        Acepto los términos y condiciones
-      </label>
-      <div id="invalidCheck3Feedback" class="invalid-feedback">
-        Debes aceptar para poder loguearte
+      <div class="form-check mt-3 col-10">
+        <input
+          class="form-check-input is-invalid"
+          type="checkbox"
+          value=""
+          id="invalidCheck3" aria-describedby="invalidCheck3Feedback"
+          required
+        />
+        <label class="form-check-label" for="invalidCheck3">
+          Acepto los términos y condiciones
+        </label>
+        <div id="invalidCheck3Feedback" class="invalid-feedback">
+          Debes aceptar para poder loguearte
+        </div>
       </div>
-    </div>
+    </form>
+  </div>
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="footer mt-5">
+
+          <div class="footer-content">
+            <div class="container">
+              <div class="row gy-4">
+                <!-- <div class="col-lg-5 col-md-12 footer-info">
+                  <a href="index.html" class="logo d-flex align-items-center">
+                    <span>MUTUO</span>
+                  </a> 
+                  
+                  <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                  <div class="social-links d-flex  mt-3">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div> -->
+      
+               <div class="col-lg-3 col-6 footer-links">
+                    <h4>Acerca de nosotros</h4>
+                    <ul>
+                      <li><i class="bi bi-dash"></i> <a href="#">Quienes somos?</a></li>
+                      <!-- <li><i class="bi bi-dash"></i> <a href="#">Nuestros valores</a></li> -->
+                      <!-- <li><i class="bi bi-dash"></i> <a href="#">Menciones legales</a></li> -->
+                      <li><i class="bi bi-dash"></i> <a href="#">Politicas de privacidad</a></li>
+                    </ul>
+                  </div>
+                <!-- <div class="col-lg-3 col-6 footer-links">
+                  <h4>Territorio</h4>
+                  <ul>
+                    <li><i class="bi bi-dash"></i> <a href="#">Provincias</a></li>
+                    <li><i class="bi bi-dash"></i> <a href="#">Localidades</a></li>
+                  </ul>
+                </div> -->
+      
+                <div class="col-lg-3 col-6 footer-links">
+                  <h4>Asistencia</h4>
+                  <ul>
+                    <!-- <li><i class="bi bi-dash"></i> <a href="#">Necesitas ayuda?</a></li> -->
+                    <li><i class="bi bi-dash"></i> <a href="#">Contactos</a></li>
+                  </ul>
+                </div>
+      
+                <!-- <div class="col-lg-3 col-6 footer-contact">
+                 <h4>Seguinos </h4>
+                 
+                 <div class="social-links d-flex  mt-3">
+                  <a href="https://www.facebook.com/Mutuo23" class="facebook"> <i class="bi bi-facebook"></i></a>
+                  <a href="https://twitter.com/Mutuo23" class="twitter"><i class="bi bi-twitter"></i></a>
+                  
+                </div> -->
+            
+                </div>
+      
+              </div>
+            </div>
+          </div>
+      
+          <div class="footer-legal">
+            <div class=" ">
+              <div class="copyright">
+                &copy; <strong><span>2023 MUTUO</span></strong>.
+              </div>
+            </div>
+          </div>
+        </footer>
+
+          <!-- Vendor JS Files -->
+          <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="assets/vendor/aos/aos.js"></script>
+          <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+          <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+          <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+          <script src="assets/vendor/php-email-form/validate.js"></script>
+        
+          <!-- Template Main JS File -->
+          <script src="assets/js/main.js"></script>
   </body>
 </html>
