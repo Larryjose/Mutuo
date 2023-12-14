@@ -519,51 +519,19 @@ app.post("/busqueda", async (req, res) => {
     </div>
   </div>`);
 
-
-
-
-    const apellidoHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.apellido}</h1>`);
-    const emailHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.email}</h1>`);
-    const direccionHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.direccion}</h1>`);
-    const cpHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.cp}</h1>`);
-    const aboutHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.about}</h1>`);
-    const categoriaHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.categoria}</h1>`);
-    const detallesHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.detalles}</h1>`);
-    console.log("--------------usuariosEncontrados-----------------")
-    console.log(usuariosEncontrados)
     console.log("--------------usuariosEncontrados-----------------")
     console.log(nombreHTML)
-    console.log(apellidoHTML)
-    console.log(emailHTML)
     console.log("--------------usuariosEncontrados-----------------")
-
-    const htmlCode = '<h1>Ejemplo de HTML</h1><p>Este es un párrafo.</p>';
 
 
     if (req.isAuthenticated()) {
       res.render("blog.hbs", {
         nombreUsuario: req.user.nombre,
-        o_mi_html: htmlCode,
         nombreHTML: nombreHTML,
-        apellidoHTML: apellidoHTML,
-        emailHTML: emailHTML,
-        direccionHTML: direccionHTML,
-        cpHTML: cpHTML,
-        aboutHTML: aboutHTML,
-        categoriaHTML: categoriaHTML,
-        detallesHTML: detallesHTML,
       });
     } else {
       res.render("blog.hbs", {
-        o_mi_html: htmlCode,
         nombreHTML: nombreHTML,
-        apellidoHTML: apellidoHTML,
-        emailHTML: emailHTML,
-        direccionHTML: direccionHTML,
-        cpHTML: cpHTML,
-        aboutHTML: aboutHTML,
-        categoriaHTML: categoriaHTML,
-        detallesHTML: detallesHTML,
       });
     }
   } catch (error) {
