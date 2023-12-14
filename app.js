@@ -492,18 +492,78 @@ app.post("/busqueda", async (req, res) => {
     });
 
     // res.json({ usuarios: usuariosEncontrados });
+    // Estructura la información en una lista de listas
+    const usuariosLista = usuariosEncontrados.map(usuario => [
+      usuario.nombre,
+      usuario.email,
+      usuario.about,
+      // ... otras propiedades que quieras incluir
+    ]);
+    // const nombreHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.nombre}</h1><h1>${usuario.apellido}</h1>`);
+    
+    
+    
+    const nombreHTML = usuariosEncontrados.map((usuario) => `<div class="card mx-auto my-5" style="max-width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Información del Usuario</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Nombre:</strong> ${usuario.nombre}</li>
+          <li class="list-group-item"><strong>Apellido:</strong>${usuario.apellido}</li>
+          <li class="list-group-item"><strong>Email:</strong>${usuario.email}</li>
+          <li class="list-group-item"><strong>Teléfono:</strong>${usuario.direccion}</li>
+          <li class="list-group-item"><strong>Dirección:</strong>${usuario.cp}</li>
+          <li class="list-group-item"><strong>Código Postal:</strong>${usuario.about}</li>
+          <li class="list-group-item"><strong>About:</strong>${usuario.categoria}</li>
+          <li class="list-group-item"><strong>Detalles:</strong>${usuario.detalles}</li>
+        </ul>
+    </div>
+  </div>`);
 
+
+
+
+    const apellidoHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.apellido}</h1>`);
+    const emailHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.email}</h1>`);
+    const direccionHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.direccion}</h1>`);
+    const cpHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.cp}</h1>`);
+    const aboutHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.about}</h1>`);
+    const categoriaHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.categoria}</h1>`);
+    const detallesHTML = usuariosEncontrados.map((usuario) => `<h1>${usuario.detalles}</h1>`);
     console.log("--------------usuariosEncontrados-----------------")
     console.log(usuariosEncontrados)
     console.log("--------------usuariosEncontrados-----------------")
+    console.log(nombreHTML)
+    console.log(apellidoHTML)
+    console.log(emailHTML)
+    console.log("--------------usuariosEncontrados-----------------")
+
+    const htmlCode = '<h1>Ejemplo de HTML</h1><p>Este es un párrafo.</p>';
+
+
     if (req.isAuthenticated()) {
       res.render("blog.hbs", {
         nombreUsuario: req.user.nombre,
-        usuariosEncontrados: usuariosEncontrados
+        o_mi_html: htmlCode,
+        nombreHTML: nombreHTML,
+        apellidoHTML: apellidoHTML,
+        emailHTML: emailHTML,
+        direccionHTML: direccionHTML,
+        cpHTML: cpHTML,
+        aboutHTML: aboutHTML,
+        categoriaHTML: categoriaHTML,
+        detallesHTML: detallesHTML,
       });
     } else {
       res.render("blog.hbs", {
-        usuariosEncontrados: usuariosEncontrados
+        o_mi_html: htmlCode,
+        nombreHTML: nombreHTML,
+        apellidoHTML: apellidoHTML,
+        emailHTML: emailHTML,
+        direccionHTML: direccionHTML,
+        cpHTML: cpHTML,
+        aboutHTML: aboutHTML,
+        categoriaHTML: categoriaHTML,
+        detallesHTML: detallesHTML,
       });
     }
   } catch (error) {
