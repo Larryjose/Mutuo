@@ -151,6 +151,25 @@
             <button class="btn btn-primary toggle-filters-button" type="button">Mostrar Filtros</button>
           </div>
     </form>
+
+
+   {{#if usuariosEncontrados.length}}
+  {{#each usuariosEncontrados as |usuario|}}
+    <div class="card">
+      <h2>{{usuariosEncontrados.nombre}}</h2>
+      <p>{{User.email}}</p>
+      <p>{{usuario.about}}{{this}}</p>
+
+    </div>
+   {{/each}}
+       {{else}}
+         <p>No se encontraron usuarios.</p>
+  {{/if}}
+
+
+
+
+
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
