@@ -54,7 +54,7 @@
             <li><a href="/busqueda">Búsqueda</a></li>
             <li><a href="/contacto">Soporte</a></li>
             {{#if nombreUsuario}}
-                <li><a href="#" class="active" >{{nombreUsuario}}</a></li>
+                <li><a href="/cuenta" class="active" >{{nombreUsuario}}</a></li>
             {{else}}
                 <li><a href="/login">Ingresá</a></li>
             {{/if}}
@@ -75,10 +75,10 @@
           </blockquote>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             {{#if nombreUsuario}}
-              <a href="form_worker.html" class="btn btn-danger btn-lg">Ofrecer mis servicios</a>
+              <a href="/agregarTrabajador" class="btn btn-danger btn-lg">Ofrecer mis servicios</a>
             {{else}}
-                <a href="form_index.html" class="btn btn-danger me-3">Quiero buscar servicios</a>
-                <a href="form_worker.html" class="btn btn-danger">Ofrecer mis servicios</a>
+                <a href="/registrar" class="btn btn-danger me-3">Quiero buscar servicios</a>
+                <a href="/agregarTrabajador" class="btn btn-danger">Ofrecer mis servicios</a>
             {{/if}}
           </div>
 

@@ -32,6 +32,18 @@
         color:white;
         margin: 2rem;
         padding: 2rem;
+        flex-direction: column;
+
+      }
+      footer {
+        background-color: #1b2f45;
+        border-top: solid #fff 1px;
+      }
+      .footer .footer-content{
+        background-color: #1b2f45;
+      }
+      .footer .footer-legal{
+        background-color: #1b2f45;
       }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -69,30 +81,35 @@
       </div>
     </header>
     <!-- End Header --> 
+    <!-- Formulario -->
 
-    <h1 class="mt-5">Formulario</h1>
+    
+    <div class="d-flex align-items-center justify-content-center flex-column">
 
-    <form class="row g-3" action="/registrar" method="post" >
+      
+      <form class="row g-3 col-10 d-flex align-items-center justify-content-center"  action="/registrar" method="post" >
 
-        <div class="col-md-6">
+        <h1 class="mt-5 col-10">Formulario</h1>
+        
+        <div class="col-md-5">
           <label for="inputName" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="inputName" name="username">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
           <label for="inputLastName" class="form-label">Apellido</label>
           <input type="text" class="form-control" id="inputLastName" name="apellido">
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
             <label for="inputDni" class="form-label">DNI</label>
             <input type="text" class="form-control" id="inputDni" name="dni">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <label for="inputPhone" class="form-label">Teléfono</label>
             <input type="text" class="form-control" id="inputPhone" name="telefono">
           </div>
 
-        <div class="col-12">
+        <div class="col-6">
           <label for="inputAddress" class="form-label">Dirección</label>
           <input type="text" class="form-control" id="inputAddress" placeholderDirección=" Main St 1234" name="direccion">
         </div>
@@ -104,29 +121,29 @@
             <option>...</option>
           </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <label for="inputState" class="form-label">Barrio</label>
             <select id="inputState" class="form-select">
               <option selected>Elige...</option>
               <option>...</option>
             </select>
           </div>
-        <dpostaliv class="col-md-2">
+        <dpostaliv class="col-md-5">
           <label for="inputZip" class="form-label">Código postal</label>
           <input type="text" class="form-control" id="inputZip" name="cp">
         </dpostaliv>
 
-        <div class="col-md-6">
+          <div class="col-md-5">
             <label for="inputEmail4" class="form-label">Email</label>
             <input type="email" class="form-control" id="inputEmail4" name="email">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <label for="inputPassword4" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="inputPassword4" name="password">
           </div>
-        </div>
         
-        <div class="form-check my-4">
+        
+        <div class="form-check my-4 col-10 ">
           <input class="form-check-input is-invalid"  type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
           <label class="form-check-label" for="invalidCheck3">
             Acepto los términos y condiciones
@@ -135,16 +152,17 @@
             Debes aceptar para poder loguearte
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
           <button type="submit" class="btn btn-primary">Ingresar</button>
         </div>
       </form>
       <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
       <div id="preloader"></div>
+    </div>
 
       <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer mt-5">
 
     <div class="footer-content">
       <div class="container">
@@ -204,13 +222,13 @@
     </div>
 
     <div class="footer-legal">
-      <div class="container">
+      <div class=" ">
         <div class="copyright">
           &copy; <strong><span>2023 MUTUO</span></strong>.
         </div>
-    
       </div>
     </div>
+  </footer>
     
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -238,6 +256,6 @@
                 });
                 }
             });
-        </script>
+    </script>
 </body>
 </html>

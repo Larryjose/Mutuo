@@ -36,7 +36,10 @@ const User = mongoose.model('Users', {
   dni: String,
   telefono: String,
   direccion: String,
-  cp: String
+  cp: String,
+  about: String,
+  categoria: String,
+  detalles: String
 });
 
 // -------------------------------------
@@ -223,13 +226,16 @@ app.get("/nosotros", (req, res) => {
 app.get("/cuenta", (req, res) => {
   if(req.isAuthenticated()){
     res.render("cuenta.hbs", {
-       nombreUsuario: req.user.nombre,
-       apellido: req.user.apellido,
-       dni: req.user.dni,
-       telefono: req.user.telefono,
-       email: req.user.email,
-       direccion: req.user.direccion,
-       cp: req.user.cp
+      nombreUsuario: req.user.nombre,
+      apellido: req.user.apellido,
+      dni: req.user.dni,
+      telefono: req.user.telefono,
+      email: req.user.email,
+      direccion: req.user.direccion,
+      cp: req.user.cp,
+      about: req.user.about,
+      categoria: req.user.categoria,
+      detalles: req.user.detalles
     });
   } else{
     res.render("login.hbs", {});
@@ -372,6 +378,62 @@ app.get("/registrar", (req, res) => {
     res.render("form_index.hbs", {});
   }
 })
+app.get("/agregarTrabajador", (req, res) => {
+  if(req.isAuthenticated()){
+    res.render("form_worker.hbs", { nombreUsuario: req.user.nombre });
+  } else{
+    res.render("form_worker.hbs", {});
+  }
+})
+app.post("/agregarTrabajador", async (req, res) => {
+  console.log(req.body.about)
+  console.log(req.body.categoria)
+  console.log(req.body.detalles)
+  if(req.isAuthenticated()){
+    try{
+
+      const user = await User.findOne({ email: req.user.email });
+      if (user) {
+        // Actualiza los campos con la nueva información
+        user.about = req.body.about;
+        user.categoria = req.body.categoria;
+        user.detalles = req.body.detalles;
+        
+        // Guarda los cambios en la base de datos
+        await user.save();
+        res.render("form_worker.hbs", {
+          nombreUsuario: req.user.nombre,
+          sweetAlertBool: true, 
+          sweetAlertIcon: "success", 
+          sweetAlertText: "Datos guardados correctamente" 
+        });
+      } else {
+        // No existe el email en la base de datos
+        res.render("form_worker.hbs", { 
+          nombreUsuario: req.user.nombre,
+          sweetAlertBool: true,
+          sweetAlertIcon: "error",
+          sweetAlertText: "Error al guardar los datos"
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.render("form_worker.hbs", { 
+        sweetAlertBool: true, 
+        sweetAlertIcon: "error", 
+        sweetAlertText: "Error al guardar los datos" 
+      });
+    } 
+  } else {
+    // No esta autenticado
+    res.render("form_index.hbs", { 
+      sweetAlertBool: true, 
+      sweetAlertIcon: "error", 
+      sweetAlertText: "Necesita iniciar sesion" 
+    });
+  }
+})
+
 app.get("/logout", (req, res) => {
   if (req.isAuthenticated()) {
     req.logout(() => {
@@ -399,6 +461,58 @@ app.post("/contacto", (req,res) => {
 
 app.post("/busqueda", async (req, res) => {
   console.log(req.body)
+  try {
+
+    if (!req.body.palabraClave) {
+      res.render("blog.hbs", {
+        nombreUsuario: req.user.nombre,
+        sweetAlertBool : true,
+        sweetAlertIcon : "error",
+        sweetAlertText : "introduzca palabra clave"
+      });
+    }
+
+    const regex = new RegExp(req.body.palabraClave, 'i');
+
+    const usuariosEncontrados = await User.find({
+      $or: [
+        { about: regex },
+        { categoria: regex },
+        { detalles: regex }
+      ]
+    });
+
+    // res.json({ usuarios: usuariosEncontrados });
+
+    console.log("--------------usuariosEncontrados-----------------")
+    console.log(usuariosEncontrados)
+    console.log("--------------usuariosEncontrados-----------------")
+    res.render("blog.hbs", {
+      nombreUsuario: req.user.nombre,
+      // sweetAlertBool : true,
+      // sweetAlertIcon : "error",
+      // sweetAlertText : "Error en la busqueda"
+      usuariosEncontrados: usuariosEncontrados
+    });
+  } catch (error) {
+    console.error("Error en la búsqueda:", error);
+    
+    if (req.isAuthenticated()) {
+      res.render("blog.hbs", {
+        nombreUsuario: req.user.nombre,
+        sweetAlertBool : true,
+        sweetAlertIcon : "error",
+        sweetAlertText : "Error en la busqueda"
+      });
+    } else {
+      res.render("blog.hbs", {
+        sweetAlertBool : true,
+        sweetAlertIcon : "error",
+        sweetAlertText : "Error en la busqueda"
+      });
+    }
+    
+  }
 })
 app.post('/login',  passport.authenticate('login', { failureRedirect: '/error_login' }), (req, res, next) => {
   console.log("--- login ---")
