@@ -28,14 +28,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Nova
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="page-blog">
@@ -560,6 +554,23 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Verifica si hay una variable 'sweetAlertBool' definida
+        var sweetAlertBool = {{ sweetAlertBool }};
+        var sweetAlertIcon = '{{ sweetAlertIcon }}';
+        var sweetAlertText = '{{ sweetAlertText }}';
+
+        // Muestra una alerta si 'sweetAlertIcon' está presente
+        if (sweetAlertBool) {
+        Swal.fire({
+            icon: sweetAlertIcon,
+            title: sweetAlertText,
+            showConfirmButton: true,
+        });
+        }
+    });
+  </script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
