@@ -105,18 +105,18 @@
     <!-- End Header --> 
     <div class="mt-5 d-flex align-items-center justify-content-center flex-column">
 
-      <form class="row g-3 col-10 d-flex align-items-center justify-content-center">   
+      <form class="row g-3 col-10 d-flex align-items-center justify-content-center"  action="/agregarTrabajador" method="post" >  
         <div class="col-10">
           <label for="inputAbout" class="form-label"
             >Contá un poco sobre vos</label
           >
-          <input type="text" class="form-control" id="inputAbout" />
+          <input type="text" class="form-control" name="about" />
         </div>
         <div class="col-10">
           <label for="inputState" class="form-label"
             >Categoría a la que perteneces</label
           >
-          <select id="inputState" class="form-select">
+          <select name="categoria" class="form-select">
             <option selected>Elige...</option>
             <option>Plomero</option>
             <option>Electricista</option>
@@ -136,7 +136,7 @@
           <input
             type="text"
             class="form-control"
-            id="inputName"
+            name="detalles"
             placeholder="Ej:"
           />
         </div>
@@ -187,6 +187,9 @@
           </label>
           <div id="invalidCheck3Feedback" class="invalid-feedback">
             Debes aceptar para poder loguearte
+          </div>
+          <div class="col-10">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
           </div>
         </div>
     </form>
